@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Pokédex National{% endblock title %}
+
+{% block content %}
+    <div class="w-full max-w-lg mx-auto">
+        <h1 class="text-3xl font-semibold mb-6">Pokédex</h1>
+        <ul class="grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {% for pokemon in pokedex %}
+                <li class="bg-white p-4 shadow-md rounded-lg">
+                    <img src="{{ pokemon.image.url }}" alt="Pokémon" class="w-full mb-2">
+                    <h2 class="font-semibold">{{ pokemon }}</h2>
+                    <p class="text-gray-600">
+                        <img src="{% static 'type/'|add:pokemon.type1|add:'.png' %}" alt="Logo du type {{ pokemon.type1 }}"/>
+                        {% if pokemon.type2 != None %}
+                            <img src="{% static 'type/'|add:pokemon.type2|add:'.png' %}" alt="Logo du type {{ pokemon.type2 }}"/>
+                        {% endif %}
+                    </p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}
