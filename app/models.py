@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from .utils import format_pokedex_number
 
 class Pokemon(models.Model):
@@ -44,6 +45,9 @@ class Pokemon(models.Model):
     def __str__(self) -> str:
         return f"{format_pokedex_number(self.numero)} # {self.name}"
     
+    def format_number(self):
+        return format_pokedex_number(self.numero)
+    
 class Evolution(models.Model):
     pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, related_name="evolution")
     evolution = models.ForeignKey(Pokemon, on_delete=models.CASCADE, related_name="pokemon")
@@ -68,3 +72,9 @@ class PokemonInstance(models.Model):
 
     def __str__(self) -> str:
         return f"{self.pokemon.name} de {self.game}"
+    
+class Extension(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+
+    def __str__(self) -> str:
+        return self.user.username

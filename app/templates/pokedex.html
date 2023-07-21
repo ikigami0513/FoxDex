@@ -3,18 +3,27 @@
 
 {% block title %}Pokédex | {{ game }}{% endblock title %}
 
+{% block stylesheets %}
+    <style>
+        .type{
+            width: 50%;
+        }
+    </style>
+{% endblock stylesheets %}
+
 {% block content %}
-    <div class="w-full max-w-lg mx-auto">
+    <div class="w-full mx-auto">
         <h1 class="text-3xl font-semibold mb-6">Pokédex de {{ game }}</h1>
-        <ul class="grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <ul class="grid gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
             {% for pokemonInstance in game.pokemons.all %}
                 <li class="bg-white p-4 shadow-md rounded-lg">
+                    <h2 class="text-lg font-semibold">{{ pokemonInstance.pokemon.format_number }}</h2>
                     <img src="{{ pokemonInstance.pokemon.image.url }}" alt="Pokémon" class="w-full mb-2">
-                    <h2 class="font-semibold">{{ pokemonInstance.pokemon }}</h2>
-                    <p class="text-gray-600">
-                        <img src="{% static 'type/'|add:pokemonInstance.pokemon.type1|add:'.png' %}" alt="Logo du type {{ pokemonInstance.pokemon.type1 }}"/>
+                    <h2 class="text-lg font-semibold">{{ pokemonInstance.pokemon.name }}</h2>
+                    <p class="flex">
+                        <img src="{% static 'type/'|add:pokemonInstance.pokemon.type1|add:'.png' %}" alt="Logo du type {{ pokemonInstance.pokemon.type1 }}" class="type"/>
                         {% if pokemonInstance.pokemon.type2 != None %}
-                            <img src="{% static 'type/'|add:pokemonInstance.pokemon.type2|add:'.png' %}" alt="Logo du type {{ pokemonInstance.pokemon.type2 }}"/>
+                            <img src="{% static 'type/'|add:pokemonInstance.pokemon.type2|add:'.png' %}" alt="Logo du type {{ pokemonInstance.pokemon.type2 }}" class="type"/>
                         {% endif %}
                     </p>
                 </li>

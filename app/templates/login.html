@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+    <div class="flex justify-center items-center p-20">
+        <form method="post" class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+            <h1 class="text-gray-700 font-bold mb-2" style="font-size:30px;">Connexion</h1>
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700 font-bold mb-2">Nom d'utilisateur</label>
+                <input type="text" id="username" name="username" class="border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none w-full px-3 bg-gray-200" autofocus required/>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700 font-bold mb-2">Mot de passe</label>
+                <div class="relative">
+                    <input type="password" id="password" name="password" class="border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none pr-10 w-full px-3 bg-gray-200" required/>
+                </div>
+            </div>
+            <div class="mb-4">
+                <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Connexion</button>
+            </div>
+            <div class="mb-4">
+                <p>
+                    Pas encore inscrit ?
+                </p>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

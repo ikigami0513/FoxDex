@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block title %}Ajouter Pokémon{% endblock title %}
+
+{% block stylesheets %}
+    <style>
+        input, button[type="submit"], select{
+            border: 1px solid black;
+            padding: 5px;
+            border-radius: 20px;
+        }
+
+        input:hover, button[type="submit"]:hover, select:hover{
+            border: 1px solid skyblue;
+        }
+
+        p{
+            margin: 10px;
+        }
+
+        form{
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+{% endblock stylesheets %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Ajouter</button>
+    </form>
+{% endblock content %}

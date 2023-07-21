@@ -4,13 +4,15 @@
 {% block title %}Jeux{% endblock title %}
 
 {% block content %}
-    <div class="w-full max-w-lg mx-auto">
+    <div class="w-full mx-auto">
         <h1 class="text-3xl font-semibold mb-6">Jeux Pokémon</h1>
-        <ul class="grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <ul class="w-full grid gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
             {% for game in games %}
                 <li class="bg-white p-4 shadow-md rounded-lg">
-                    <img src="{{ game.jaquette.url }}" alt="Jaquette de {{ game }}" class="w-full mb-2">
-                    <h2 class="font-semibold">{{ game }}</h2>
+                    <a href="{% url 'pokedex' version=game.name %}">
+                        <img src="{{ game.jaquette.url }}" alt="Jaquette de {{ game }}" class="w-full mb-2">
+                        <h2 class="font-semibold">{{ game }}</h2>
+                    </a>
                 </li>
             {% endfor %}
         </ul>

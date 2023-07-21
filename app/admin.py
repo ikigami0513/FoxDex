@@ -17,3 +17,7 @@ class GameAdmin(admin.ModelAdmin):
 @admin.register(PokemonInstance)
 class PokemonInstanceAdmin(admin.ModelAdmin):
     pass
+
+@admin.register(Extension)
+class ExtensionAdmin(admin.ModelAdmin):
+    pass
