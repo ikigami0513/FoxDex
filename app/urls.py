@@ -11,4 +11,5 @@ urlpatterns = [
     path('pokemon/add', AddPokemon.as_view(), name="add_pokemon"),
     path('logout/', UserLogout.as_view(), name="logout"),
     path('login/', UserLogin.as_view(), name="login"),
+    path('register/', UserRegister.as_view(), name="register"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

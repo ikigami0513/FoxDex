@@ -1,5 +1,7 @@
 from django import forms 
 from .models import Pokemon
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 class PokemonForm(forms.ModelForm):
     class Meta:
@@ -29,3 +31,8 @@ class PokemonForm(forms.ModelForm):
     def clean_type2(self):
         type2 = self.cleaned_data['type2']
         return type2 if type2 != '' else None
+    
+class RegisterForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password1', 'password2')

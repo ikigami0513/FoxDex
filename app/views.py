@@ -70,3 +70,22 @@ class UserLogin(View):
             return render(request, 'login.html', {
                 'error_message': 'Invalid login',
             })
+        
+class UserRegister(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('index')
+        
+        return render(request, 'register.html')
+    
+    def post(self, request):
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect("index")
+
+        return render(request, "register.html")

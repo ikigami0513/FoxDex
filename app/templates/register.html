@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+    <div class="flex justify-center items-center p-20">
+        <form method="post" class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+            <h1 class="text-gray-700 font-bold mb-2" style="font-size:30px;">Inscription</h1>
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700 font-bold mb-2">Nom d'utilisateur</label>
+                <input type="text" id="username" name="username" class="border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none w-full px-3 bg-gray-200" maxlenght="150" autofocus required/>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-bold mb-2">Adresse électronique</label>
+                <input type="email" id="email" name="email" class="border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none w-full px-3 bg-gray-200" maxlenght="254" required/>
+            </div>
+            <div class="mb-4">
+                <label for="password1" class="block text-gray-700 font-bold mb-2">Mot de passe</label>
+                <div class="relative">
+                    <input type="password" id="password" name="password1" class="border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none w-full px-3 bg-gray-200" autocomplete="new-password" required/>
+                </div>
+                <div class="mb-2"></div>
+                <small>
+                    <ul>
+                        <li>Votre mot de passe ne peut pas trop ressembler à vos autres informations personnelles.</li>
+                        <li>Votre mot de passe doit contenir au minimum 8 caractères.</li>
+                        <li>Votre mot de passe ne peut pas être un mot de passe couramment utilisé.</li>
+                        <li>Votre mot de passe ne peut pas être entièrement numérique.<li>
+                    </ul>
+                </small>
+            </div>
+            <div class="mb-4">
+                <label for="password2" class="block text-gray-700 font-bold mb-2">Confirmation du mot de passe</label>
+                <input type="password" name="password2" class="border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none w-full px-3 bg-gray-200" autocomplete="new-password" required/>
+            </div>
+            <div class="mb-4">
+                <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Inscription</button>
+            </div>
+            <div class="mb-4">
+                <p>
+                    Déjà inscrit ?
+                    <a href="{% url 'login' %}" class="text-indigo-500">Se connecter</a>
+                </p>
+            </div>
+        </form>
+    </div>
+{% endblock %}
