@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db.models.signals import post_save
+from rest_framework.authtoken.models import Token
 from django.dispatch import receiver
 from .models import Extension
 
@@ -7,3 +8,4 @@ from .models import Extension
 def create_extension(sender, instance=None, created=False, **kwargs):
     if created:
         Extension.objects.create(user=instance)
+        Token.objects.create(user=instance)

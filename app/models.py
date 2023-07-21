@@ -75,6 +75,8 @@ class PokemonInstance(models.Model):
     
 class Extension(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    friends = models.ManyToManyField(User, related_name="friends")
+    pokemons = models.ManyToManyField(PokemonInstance, related_name="users")
 
     def __str__(self) -> str:
         return self.user.username

@@ -32,12 +32,18 @@ class GameView(View):
     
 class AddPokemon(View):
     def get(self, request):
+        if not request.user.is_superuser:
+            return redirect('index')
+
         form = PokemonForm()
         return render(request, 'addPokemon.html', context={
             'form': form
         })
     
     def post(self, request):
+        if not request.user.is_superuser:
+            return redirect('index')
+
         form = PokemonForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
