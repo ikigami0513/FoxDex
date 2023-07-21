@@ -1,0 +1,23 @@
+{% load static%}
+{
+    "numero": "{{ pokemon.numero }}",
+    "name": "{{ pokemon.name }}",
+    "image": "{{ pokemon.image.url }}"
+    "types": [
+        "{{ pokemon.type1 }}"
+        {% if pokemon.type2 != None %}, {{ pokemon.type2 }}{% endif %}
+    ],
+    "data": [
+        "taille": "{{ pokemon.taille }}",
+        "poids": "{{ pokemon.poids }}",
+        "categorie": "{{ pokemon.categorie }}"
+    ],
+    "stats": [
+        "pv": "{{ pokemon.pv }}",
+        "attaque": "{{ pokemon.attaque }}",
+        "defense": "{{ pokemon.defense }}",
+        "attaque_spe": "{{ pokemon.attaque_spe }}",
+        "defense_spe": "{{ pokemon.defense_spe }}",
+        "vitesse": "{{ pokemon.vitesse }}"
+    ]
+}
