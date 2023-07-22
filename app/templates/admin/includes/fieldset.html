@@ -1,5 +1,6 @@
+{% load isImageField %}
 <fieldset class="module aligned {{ fieldset.classes }}">
-    {% if fieldset.name %}<h2>{{ fieldset.name }}</h2>{% endif %}
+    {% if fieldset.name %}<h2 class="w-full bg-gray-200">{{ fieldset.name }}</h2>{% endif %}
     {% if fieldset.description %}
         <div class="description">{{ fieldset.description|safe }}</div>
     {% endif %}

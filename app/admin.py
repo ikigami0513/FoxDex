@@ -6,6 +6,17 @@ from .forms import *
 @admin.register(Pokemon)
 class PokemonAdmin(admin.ModelAdmin):
     form = PokemonForm
+    fieldsets = (
+        ('Informations', {
+            'fields': ('numero', 'name', 'image', 'type1', 'type2')
+        }),
+        ('Data', {
+            'fields': ('taille', 'poids', 'categorie')
+        }),
+        ('Stats', {
+            'fields': ('pv', 'attaque', 'defense', 'attaque_spe', 'defense_spe', 'vitesse')
+        })
+    )
 
 @admin.register(Evolution)
 class EvolutionAdmin(admin.ModelAdmin):

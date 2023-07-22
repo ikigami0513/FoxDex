@@ -262,12 +262,11 @@
 }
 
 #changelist table tbody tr:has(input[type=checkbox]:checked) {
-    background-color: var(--selected-row);
+    background-color: var(--selected-model);
 }
 
 #changelist .actions {
     padding: 10px;
-    background: var(--body-bg);
     border-top: none;
     border-bottom: none;
     line-height: 1.5rem;

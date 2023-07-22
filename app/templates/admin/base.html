@@ -25,14 +25,12 @@
 
     {% if not is_popup %}
     <!-- Header -->
-    {% block header %}
-    
-    {% endblock %}
+    {% block header %}{% endblock %}
     <!-- END Header -->
     {% block nav-breadcrumbs %}
       <nav aria-label="{% translate 'Breadcrumbs' %}">
         {% block breadcrumbs %}
-          <div class="breadcrumbs">
+          <div class="breadcrumbs w-full bg-gray-200 hover:bg-gray-300">
             <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
             {% if title %} &rsaquo; {{ title }}{% endif %}
           </div>
@@ -58,8 +56,8 @@
         <!-- Content -->
         <div id="content" class="{% block coltype %}colM{% endblock %}">
           {% block pretitle %}{% endblock %}
-          {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
-          {% block content_subtitle %}{% if subtitle %}<h2>{{ subtitle }}</h2>{% endif %}{% endblock %}
+          {% block content_title %}{% endblock %}
+          {% block content_subtitle %}{% if subtitle %}<h2 class="w-full bg-gray-200">{{ subtitle }}</h2>{% endif %}{% endblock %}
           {% block content %}
             {% block object-tools %}{% endblock %}
             {{ content }}

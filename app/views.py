@@ -8,7 +8,7 @@ from .forms import *
 class NationalPokedexView(View):
     def get(self, request):
         pokedex = Pokemon.objects.all()
-        return render(request, 'nationalPokedex.html', context={
+        return render(request, 'pokemon/nationalPokedex.html', context={
             'pokedex': pokedex,
         })
     
@@ -17,16 +17,16 @@ class PokedexView(View):
         try:
             game = Game.objects.get(name=version)
         except Game.DoesNotExist:
-            return render(request, 'error404.html')
+            return render(request, 'error/error404.html')
         
-        return render(request, 'pokedex.html', context={
+        return render(request, 'pokemon/pokedex.html', context={
             'game': game
         })
     
 class GameView(View):
     def get(self, request):
         games = Game.objects.all()
-        return render(request, 'game.html', context={
+        return render(request, 'pokemon/game.html', context={
             'games': games,
         })
     
@@ -40,7 +40,7 @@ class UserLogin(View):
         if request.user.is_authenticated:
             return redirect('index')
         
-        return render(request, 'login.html')
+        return render(request, 'user/login.html')
     
     def post(self, request):
         username = request.POST["username"]
@@ -50,7 +50,7 @@ class UserLogin(View):
             login(request, user)
             return redirect('index')
         else:
-            return render(request, 'login.html', {
+            return render(request, 'user/login.html', {
                 'error_message': 'Invalid login',
             })
         
@@ -59,7 +59,7 @@ class UserRegister(View):
         if request.user.is_authenticated:
             return redirect('index')
         
-        return render(request, 'register.html')
+        return render(request, 'user/register.html')
     
     def post(self, request):
         form = RegisterForm(request.POST)
@@ -71,4 +71,11 @@ class UserRegister(View):
             login(request, user)
             return redirect("index")
 
-        return render(request, "register.html")
+        return render(request, "user/register.html")
+
+class SettingsView(View):
+    def get(self, request):
+        if not request.user.is_authenticated:
+            return redirect('index')
+        
+        return render(request, 'user/settings.html')
