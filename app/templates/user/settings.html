@@ -3,5 +3,51 @@
 {% block title %}FoxDex | Paramètres{% endblock title %}
 
 {% block main %}
-    
+    <h1 class="text-xl w-full bg-gray-200 p-1">Paramètres</h1>
+  
+      <!-- Contenu principal des paramètres -->
+      <main class="p-8 w-3/4">
+        
+        <!-- Section Général -->
+        <section class="mb-8">
+            <h2 class="text-xl font-bold mb-4">Général</h2>
+            <div class="flex p-4 bg-white shadow rounded-lg justify-between">
+                <div>Mode sombre</div>
+                <div>{% include 'element/toggle_switch_pokeball.html' %}</div>
+            </div>
+        </section>
+  
+        <!-- Section Profil -->
+        <section class="mb-8">
+          <h2 class="text-xl font-bold mb-4">Profil</h2>
+          <div class="p-4 bg-white shadow rounded-lg">
+            <!-- Vos options de paramètres ici -->
+          </div>
+        </section>
+  
+        <!-- Section Notifications -->
+        <section class="mb-8">
+          <h2 class="text-xl font-bold mb-4">Notifications</h2>
+          <div class="p-4 bg-white shadow rounded-lg">
+            <!-- Vos options de paramètres ici -->
+          </div>
+        </section>
+  
+        <!-- Section Sécurité -->
+        <section class="mb-8">
+          <h2 class="text-xl font-bold mb-4">Sécurité</h2>
+          <div class="p-4 bg-white shadow rounded-lg">
+            <!-- Vos options de paramètres ici -->
+          </div>
+        </section>
+  
+        <!-- Section Abonnement -->
+        <section>
+          <h2 class="text-xl font-bold mb-4">Abonnement</h2>
+          <div class="p-4 bg-white shadow rounded-lg">
+            <!-- Vos options de paramètres ici -->
+          </div>
+        </section>
+  
+      </main>
 {% endblock main %}
