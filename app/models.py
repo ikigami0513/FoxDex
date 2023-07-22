@@ -49,6 +49,10 @@ class Pokemon(models.Model):
         return format_pokedex_number(self.numero)
     
 class Evolution(models.Model):
+    class Meta:
+        verbose_name = "Évolution"
+        verbose_name_plural = "Évolutions"
+
     pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, related_name="evolution")
     evolution = models.ForeignKey(Pokemon, on_delete=models.CASCADE, related_name="pokemon")
     condition = models.CharField(max_length=250)
@@ -57,6 +61,10 @@ class Evolution(models.Model):
         return f"{self.pokemon.name} -> {self.condition} -> {self.evolution.name}"
     
 class Game(models.Model):
+    class Meta:
+        verbose_name = "Jeu"
+        verbose_name_plural = "Jeux"
+
     name = models.CharField(max_length=40)
     jaquette = models.ImageField(upload_to="jaquette/")
 
@@ -64,6 +72,10 @@ class Game(models.Model):
         return f"Pokemon version {self.name}"
 
 class PokemonInstance(models.Model):
+    class Meta:
+        verbose_name = "Instance Pokémon"
+        verbose_name_plural = "Instances Pokémon"
+
     pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, related_name="instances")
     game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name="pokemons")
 
@@ -74,6 +86,10 @@ class PokemonInstance(models.Model):
         return f"{self.pokemon.name} de {self.game}"
     
 class Extension(models.Model):
+    class Meta:
+        verbose_name = "Extension d'utilisateur"
+        verbose_name_plural = "Extensions d'utilisateurs"
+
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     friends = models.ManyToManyField(User, related_name="friends")
     pokemons = models.ManyToManyField(PokemonInstance, related_name="users")

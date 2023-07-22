@@ -8,7 +8,6 @@ urlpatterns = [
     path('pokedex/', NationalPokedexView.as_view(), name="national_pokedex"),
     path('pokedex/<str:version>', PokedexView.as_view(), name="pokedex"),
     path('games/', GameView.as_view(), name="games"),
-    path('pokemon/add', AddPokemon.as_view(), name="add_pokemon"),
     path('logout/', UserLogout.as_view(), name="logout"),
     path('login/', UserLogin.as_view(), name="login"),
     path('register/', UserRegister.as_view(), name="register"),

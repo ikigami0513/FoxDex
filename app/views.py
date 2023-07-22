@@ -30,29 +30,6 @@ class GameView(View):
             'games': games,
         })
     
-class AddPokemon(View):
-    def get(self, request):
-        if not request.user.is_superuser:
-            return redirect('index')
-
-        form = PokemonForm()
-        return render(request, 'addPokemon.html', context={
-            'form': form
-        })
-    
-    def post(self, request):
-        if not request.user.is_superuser:
-            return redirect('index')
-
-        form = PokemonForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect("add_pokemon")
-
-        return render(request, 'addPokemon.html', context={
-            'form': form,
-        })
-    
 class UserLogout(View):
     def get(self, request):
         logout(request)
@@ -95,10 +72,3 @@ class UserRegister(View):
             return redirect("index")
 
         return render(request, "register.html")
-    
-class CrudIndex(View):
-    def get(self, request):
-        if not request.user.is_superuser:
-            return redirect("index")
-        
-        return render(request, "admin/index.html")
