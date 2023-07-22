@@ -1,10 +1,11 @@
 from django import forms
 from django.contrib import admin
 from .models import *
+from .forms import *
 
 @admin.register(Pokemon)
 class PokemonAdmin(admin.ModelAdmin):
-    pass
+    form = PokemonForm
 
 @admin.register(Evolution)
 class EvolutionAdmin(admin.ModelAdmin):

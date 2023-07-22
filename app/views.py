@@ -95,3 +95,10 @@ class UserRegister(View):
             return redirect("index")
 
         return render(request, "register.html")
+    
+class CrudIndex(View):
+    def get(self, request):
+        if not request.user.is_superuser:
+            return redirect("index")
+        
+        return render(request, "admin/index.html")
