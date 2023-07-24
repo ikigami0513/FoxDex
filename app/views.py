@@ -75,7 +75,4 @@ class UserRegister(View):
 
 class SettingsView(View):
     def get(self, request):
-        if not request.user.is_authenticated:
-            return redirect('index')
-        
         return render(request, 'user/settings.html')

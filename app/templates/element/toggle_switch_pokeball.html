@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'css/pokeball.css' %}"/>
 
 <label class="switch">
-    <input type="checkbox">
+    <input type="checkbox" id="night_mode" {% if theme_value == 'dark'%}checked{% endif %}>
     <span class="slider">
         <span class="poketop"></span>
         <span class="bar"></span>

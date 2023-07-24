@@ -4,11 +4,17 @@
 {% block title %}Jeux{% endblock title %}
 
 {% block main %}
-    <div class="w-full mx-auto">
-        <h1 class="text-3xl font-semibold mb-6">Jeux Pokémon</h1>
+    <div class="w-full mx-auto m-4">
         <ul class="w-full grid gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
             {% for game in games %}
-                <li class="bg-white p-4 shadow-md rounded-lg">
+                <li class="
+                    p-4 shadow-md rounded-lg 
+                    {% if theme_value == 'dark' %}
+                        bg-gray-700 text-white
+                    {% else %}
+                        bg-white 
+                    {% endif %}
+                ">
                     <a href="{% url 'pokedex' version=game.name %}">
                         <img src="{{ game.jaquette.url }}" alt="Jaquette de {{ game }}" class="w-full mb-2">
                         <h2 class="font-semibold">{{ game }}</h2>

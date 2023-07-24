@@ -4,15 +4,43 @@
 
 {% block main %}
     <div class="flex justify-center items-center p-20">
-        <form method="post" class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
-            <h1 class="text-gray-700 font-bold mb-2" style="font-size:30px;">Connexion</h1>
+        <form method="post" class="
+            w-full max-w-md p-6 rounded-lg shadow-md
+            {% if theme_value == 'dark' %}
+                bg-gray-700
+            {% else %}
+                bg-white
+            {% endif %}
+        ">
+            <h1 class="
+                font-bold mb-2 
+                {% if theme_value == 'dark' %}
+                    text-white
+                {% else %}
+                    text-gray-700
+                {% endif %}
+            " style="font-size:30px;">Connexion</h1>
             {% csrf_token %}
             <div class="mb-4">
-                <label for="username" class="block text-gray-700 font-bold mb-2">Nom d'utilisateur</label>
+                <label for="username" class="
+                    block font-bold mb-2
+                    {% if theme_value == 'dark' %}
+                        text-white
+                    {% else %}
+                        text-gray-700
+                    {% endif %}
+                ">Nom d'utilisateur</label>
                 <input type="text" id="username" name="username" class="border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none w-full px-3 bg-gray-200" autofocus required/>
             </div>
             <div class="mb-4">
-                <label for="password" class="block text-gray-700 font-bold mb-2">Mot de passe</label>
+                <label for="password" class="
+                    block font-bold mb-2
+                    {% if theme_value == 'dark' %}
+                        text-white
+                    {% else %}
+                        text-gray-700
+                    {% endif %}
+                ">Mot de passe</label>
                 <div class="relative">
                     <input type="password" id="password" name="password" class="border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none pr-10 w-full px-3 bg-gray-200" required/>
                 </div>
@@ -21,7 +49,13 @@
                 <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Connexion</button>
             </div>
             <div class="mb-4">
-                <p>
+                <p class="
+                    {% if theme_value == 'dark' %}
+                        text-white
+                    {% else %}
+                        text-gray-700
+                    {% endif %}
+                ">
                     Pas encore inscrit ?
                     <a href="{% url 'register' %}" class="text-indigo-500">S'inscrire</a>
                 </p>

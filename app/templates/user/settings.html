@@ -1,53 +1,109 @@
 {% extends 'layout.html' %}
+{% load static %}
 
 {% block title %}FoxDex | Paramètres{% endblock title %}
 
+{% block javascripts %}
+    <script language="javascript" src="{% static 'javascript/cookie.js' %}"></script>
+{% endblock %}
+
 {% block main %}
-    <h1 class="text-xl w-full bg-gray-200 p-1">Paramètres</h1>
-  
-      <!-- Contenu principal des paramètres -->
-      <main class="p-8 w-3/4">
+    <h1 class="
+        text-xl w-full p-2 rounded-lg
+        {% if theme_value == 'dark' %}
+            bg-gray-700
+            text-white
+        {% else %}
+            bg-gray-200
+            text-black
+        {% endif %}
+    ">Paramètres</h1>
+
+    <main class="
+        p-8 w-full
+        {% if theme_value == 'dark' %}
+            text-white
+        {% else %}
+            text-black
+        {% endif %}
+    ">
         
         <!-- Section Général -->
         <section class="mb-8">
             <h2 class="text-xl font-bold mb-4">Général</h2>
-            <div class="flex p-4 bg-white shadow rounded-lg justify-between">
+            <div class="
+                flex p-4 shadow rounded-lg justify-between
+                {% if theme_value == 'dark' %}
+                    bg-gray-700
+                {% else %}
+                    bg-white
+                {% endif %}
+            ">
                 <div>Mode sombre</div>
                 <div>{% include 'element/toggle_switch_pokeball.html' %}</div>
+                <script language="javascript" src="{% static 'javascript/toggle_night_mode.js' %}"></script>
             </div>
         </section>
   
         <!-- Section Profil -->
         <section class="mb-8">
-          <h2 class="text-xl font-bold mb-4">Profil</h2>
-          <div class="p-4 bg-white shadow rounded-lg">
-            <!-- Vos options de paramètres ici -->
-          </div>
+            <h2 class="text-xl font-bold mb-4">Profil</h2>
+            <div class="
+                flex p-4 shadow rounded-lg justify-between
+                {% if theme_value == 'dark' %}
+                    bg-gray-700
+                {% else %}
+                    bg-white
+                {% endif %}
+            ">
+                <!-- Vos options de paramètres ici -->
+            </div>
         </section>
   
         <!-- Section Notifications -->
         <section class="mb-8">
-          <h2 class="text-xl font-bold mb-4">Notifications</h2>
-          <div class="p-4 bg-white shadow rounded-lg">
-            <!-- Vos options de paramètres ici -->
-          </div>
+            <h2 class="text-xl font-bold mb-4">Notifications</h2>
+            <div class="
+                flex p-4 shadow rounded-lg justify-between
+                {% if theme_value == 'dark' %}
+                    bg-gray-700
+                {% else %}
+                    bg-white
+                {% endif %}
+            ">
+                <!-- Vos options de paramètres ici -->
+            </div>
         </section>
   
         <!-- Section Sécurité -->
         <section class="mb-8">
-          <h2 class="text-xl font-bold mb-4">Sécurité</h2>
-          <div class="p-4 bg-white shadow rounded-lg">
-            <!-- Vos options de paramètres ici -->
-          </div>
+            <h2 class="text-xl font-bold mb-4">Sécurité</h2>
+            <div class="
+                flex p-4 shadow rounded-lg justify-between
+                {% if theme_value == 'dark' %}
+                    bg-gray-700
+                {% else %}
+                    bg-white
+                {% endif %}
+            ">
+                <!-- Vos options de paramètres ici -->
+            </div>
         </section>
-  
+
         <!-- Section Abonnement -->
         <section>
-          <h2 class="text-xl font-bold mb-4">Abonnement</h2>
-          <div class="p-4 bg-white shadow rounded-lg">
-            <!-- Vos options de paramètres ici -->
-          </div>
+            <h2 class="text-xl font-bold mb-4">Abonnement</h2>
+            <div class="
+                flex p-4 shadow rounded-lg justify-between
+                {% if theme_value == 'dark' %}
+                    bg-gray-700
+                {% else %}
+                    bg-white
+                {% endif %}
+            ">
+                <!-- Vos options de paramètres ici -->
+            </div>
         </section>
-  
-      </main>
+
+    </main>
 {% endblock main %}
